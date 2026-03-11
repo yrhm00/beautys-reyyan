@@ -2,7 +2,7 @@ import { NavLink, Outlet, useLocation } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { Calendar, Menu, X, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import logoImg from "figma:asset/7b82f76e3f0cd366015c04081430198874131bd1.png";
+import logoImg from "@/assets/beautys-reyyan-logo.png";
 import { BookingModal } from "./BookingModal";
 
 const links = [
