@@ -1,0 +1,59 @@
+@theme {
+  --color-beige-50: #FCFBF9;
+  --color-beige-100: #F9F6F0;
+  --color-beige-200: #F3EFE6;
+  --color-beige-300: #E6DECE;
+  --color-accent: #B89C8A;
+  --color-accent-dark: #9A7B68;
+  --color-ink-light: #70655B;
+  --color-ink: #4A3C31;
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--color-beige-100);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: var(--font-serif);
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.clip-reveal {
+  clip-path: inset(100% 0 0 0);
+}
+
+.pill-shape {
+  border-radius: 9999px;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-beige-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-beige-300);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
