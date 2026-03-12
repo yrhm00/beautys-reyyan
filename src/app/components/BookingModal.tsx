@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, CheckCircle2, ArrowRight, ArrowLeft, AlertCircle, Calendar as CalendarIcon, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { buildMailto, siteConfig } from "../siteConfig";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -102,8 +103,32 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (step === 4 && formData.acceptedPolicy) {
+      const selectedService = services.find((service) => service.id === formData.serviceId)?.title ?? "Non renseigne";
+      const selectedTime = timePreferences.find((pref) => pref.id === formData.timePreference)?.label ?? "Non renseigne";
+      const selectedDate = formData.date ? formatDate(formData.date) : "Non renseignee";
+
+      const body = [
+        "Bonjour,",
+        "",
+        "Je souhaite faire une demande de rendez-vous via le site Beauty's Reyyan.",
+        "",
+        `Prestation : ${selectedService}`,
+        `Date souhaitee : ${selectedDate}`,
+        `Preference horaire : ${selectedTime}`,
+        `Prenom : ${formData.firstName}`,
+        `Nom : ${formData.lastName}`,
+        `Telephone : ${formData.phone}`,
+        `Email : ${formData.email || "Non renseigne"}`,
+        "",
+        "Informations complementaires :",
+        formData.message || "Aucune precision.",
+      ].join("\n");
+
+      window.location.href = buildMailto(
+        `Demande de rendez-vous - ${selectedService}`,
+        body,
+      );
       setIsSubmitted(true);
-      // Backend integration goes here
     }
   };
 
@@ -162,8 +187,11 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
             {isSubmitted ? (
               <div className="flex-1 overflow-y-auto p-12 flex flex-col items-center justify-center text-center space-y-4">
                 <CheckCircle2 className="w-16 h-16 text-green-600 mb-2" />
-                <h3 className="text-xl font-serif text-[#4A3C31]">Demande envoyée avec succès</h3>
-                <p className="text-[#70655B] text-sm max-w-sm leading-relaxed">Nous avons bien reçu votre demande de rendez-vous. Notre équipe vous contactera très prochainement pour confirmer la disponibilité et fixer l'heure exacte avec vous.</p>
+                <h3 className="text-xl font-serif text-[#4A3C31]">Demande preparee avec succes</h3>
+                <p className="text-[#70655B] text-sm max-w-sm leading-relaxed">
+                  Votre application mail va s'ouvrir avec votre demande pre-remplie. Si rien ne se passe,
+                  contactez directement le centre au <a href={siteConfig.phoneHref} className="text-[#4A3C31] underline">{siteConfig.phoneDisplay}</a> ou par email a <a href={siteConfig.emailHref} className="text-[#4A3C31] underline">{siteConfig.email}</a>.
+                </p>
                 <button onClick={onClose} className="mt-8 px-8 py-3 bg-[#4A3C31] text-white rounded-full text-sm font-medium hover:bg-[#70655B] transition-colors">
                   Fermer
                 </button>
@@ -430,7 +458,7 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       type={step === 4 ? "submit" : "button"} 
                       onClick={step < 4 ? handleNext : undefined}
                       disabled={
-                        (step === 2 && (!formData.date || !formData.time)) ||
+                        (step === 2 && (!formData.date || !formData.timePreference)) ||
                         (step === 3 && (!formData.firstName || !formData.lastName || !formData.phone))
                       }
                       className="flex-1 px-6 py-3 bg-[#4A3C31] text-white rounded-xl font-medium tracking-wide hover:bg-[#70655B] disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"

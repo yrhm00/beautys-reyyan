@@ -1,9 +1,29 @@
 import { motion } from "motion/react";
 import { Sparkle } from "lucide-react";
+import { FounderPortrait } from "../components/FounderPortrait";
+import { Seo } from "../components/Seo";
+import { getBreadcrumbSchema, siteConfig } from "../siteConfig";
 
 export function About() {
   return (
     <div className="relative min-h-screen">
+       <Seo
+         title="A propos du centre d'epilation laser a Gilly"
+         description="Decouvrez l'univers de Beauty's Reyyan, centre d'epilation laser a Gilly en Belgique, dirige par une fondatrice experimentee depuis plus de 4 ans."
+         path="/about"
+         keywords={[
+           "a propos Beauty's Reyyan",
+           "centre epilation laser Gilly",
+           "fondatrice Beauty's Reyyan",
+           "epilation laser Belgique",
+         ]}
+         schema={[
+           getBreadcrumbSchema([
+             { name: "Accueil", path: "/" },
+             { name: "A propos", path: "/about" },
+           ]),
+         ]}
+       />
        {/* Hero Image Section */}
        <section className="relative w-full px-6 md:px-12 mx-auto max-w-[96rem] h-[60vh] min-h-[500px] mt-8 rounded-[2.5rem] overflow-hidden">
           <motion.img 
@@ -35,31 +55,37 @@ export function About() {
              </h2>
              <div className="w-16 h-[1px] bg-[#B89C8A] mb-8" />
              <p className="text-[#70655B] leading-relaxed mb-6">
-                Chez Beauty's Reyyan, nous avons fait le choix de l'hyper-spécialisation. Plutôt que de proposer de multiples soins esthétiques, nous nous concentrons à 100% sur l'épilation laser.
+                Chez Beauty's Reyyan, nous avons fait le choix de l'hyper-specialisation. Depuis plus de {siteConfig.experienceYears} ans, le centre accompagne sa clientele avec une approche precise, rassurante et entierement dediee a l'epilation laser.
              </p>
              <p className="text-[#70655B] leading-relaxed">
-                Ce choix nous permet de maîtriser les dernières technologies (Alexandrite, Nd:YAG, Diode) et de garantir à nos patientes un résultat optimal, définitif et quasiment sans douleur, quel que soit leur type de peau, dans un environnement chic, propre et sécurisé.
+                Ce positionnement nous permet de travailler avec des protocoles clairs, d'adapter chaque seance au phototype de la cliente et d'offrir une experience premium au coeur de Gilly, en Belgique.
              </p>
           </div>
           <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden">
-             <motion.img 
+             <motion.div
                initial={{ opacity: 0, scale: 0.9 }}
                whileInView={{ opacity: 1, scale: 1 }}
                viewport={{ once: true }}
                transition={{ duration: 1 }}
-               src="https://images.unsplash.com/photo-1663229049147-30f47be043ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXJtYXRvbG9naXN0JTIwY29uc3VsdGF0aW9uJTIwbGFzZXJ8ZW58MXx8fHwxNzczMjQ5NzU0&ixlib=rb-4.1.0&q=80&w=1080" 
-               alt="Dr. Reyyan"
-               className="w-full h-full object-cover"
-             />
+               className="w-full h-full"
+             >
+               <FounderPortrait
+                 alt="Portrait de la fondatrice de Beauty's Reyyan"
+                 className="w-full h-full object-cover"
+               />
+             </motion.div>
              <div className="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-white">
-                <h3 className="text-xl font-serif text-[#4A3C31] mb-1">Mme Reyyan</h3>
+                <h3 className="text-xl font-serif text-[#4A3C31] mb-1">Reyyan</h3>
                 <p className="text-sm text-[#70655B] uppercase tracking-wider mb-3">Fondatrice & Experte Laser</p>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                    <span className="inline-flex items-center gap-1 text-xs font-medium text-[#4A3C31] bg-[#F4EFE6] px-3 py-1 rounded-full">
-                     <Sparkle className="w-3 h-3" /> Certifiée
+                     <Sparkle className="w-3 h-3" /> Centre specialise
                    </span>
                    <span className="inline-flex items-center gap-1 text-xs font-medium text-[#4A3C31] bg-[#F4EFE6] px-3 py-1 rounded-full">
-                     10+ ans d'exp.
+                     {siteConfig.experienceYears}+ ans d'experience
+                   </span>
+                   <span className="inline-flex items-center gap-1 text-xs font-medium text-[#4A3C31] bg-[#F4EFE6] px-3 py-1 rounded-full">
+                     Gilly, Belgique
                    </span>
                 </div>
              </div>
@@ -74,9 +100,9 @@ export function About() {
              </div>
              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[
-                  { title: "Matériel Haute Technologie", desc: "Nous utilisons exclusivement des lasers médicaux de classe IV équipés de systèmes de refroidissement cryogéniques pour un confort absolu." },
-                  { title: "Sécurité Médicale", desc: "Tous nos protocoles sont validés et testés. Chaque séance est précédée d'une analyse de votre peau pour adapter les paramètres." },
-                  { title: "Spécialisation 100%", desc: "Nous ne faisons qu'une seule chose, et nous le faisons à la perfection. L'épilation laser est notre seule expertise." }
+                  { title: "Experience Reelle", desc: `Plus de ${siteConfig.experienceYears} ans de pratique terrain au service d'une clientele qui recherche expertise, regularite et confort.` },
+                  { title: "Protocoles Personnalises", desc: "Chaque seance est adaptee a la zone, au phototype et a l'objectif de la cliente pour garder une approche precise et rassurante." },
+                  { title: "Centre en Belgique", desc: "Beauty's Reyyan vous accueille a Gilly avec une experience haut de gamme, pensee pour completer parfaitement la visibilite sur Instagram et le bouche-a-oreille local." }
                 ].map((value, i) => (
                    <motion.div 
                      key={value.title}

@@ -1,9 +1,10 @@
 import { NavLink, Outlet, useLocation } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
-import { Calendar, Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import logoImg from "@/assets/beautys-reyyan-logo.png";
 import { BookingModal } from "./BookingModal";
+import { siteConfig } from "../siteConfig";
 
 const links = [
   { name: "Accueil", path: "/" },
@@ -11,6 +12,11 @@ const links = [
   { name: "Services", path: "/services" },
   { name: "Formations", path: "/formation" },
   { name: "Contact", path: "/contact" },
+];
+
+const socialLinks = [
+  { label: "Instagram", href: siteConfig.instagramUrl },
+  { label: "Facebook", href: siteConfig.facebookUrl },
 ];
 
 export function Layout() {
@@ -139,7 +145,7 @@ export function Layout() {
              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
              className="min-h-screen"
            >
-              <Outlet context={{ openBookingModal }} />
+              <Outlet />
            </motion.div>
         </AnimatePresence>
       </main>
@@ -178,18 +184,29 @@ export function Layout() {
             <div className="space-y-6">
                <h4 className="font-medium tracking-widest uppercase text-xs text-[#4A3C31]">Coordonnées</h4>
                <address className="not-italic text-sm text-[#70655B] leading-relaxed">
-                 Rue des Hauchies 93, <br/>
-                 6060 Gilly <br/>
-                 Belgique <br/><br/>
-                 <a href="mailto:hello@beautysreyyan.com" className="hover:text-[#B89C8A]">hello@beautysreyyan.com</a>
+                 {siteConfig.address.street}, <br/>
+                 {siteConfig.address.postalCode} {siteConfig.address.city} <br/>
+                 {siteConfig.address.country} <br/><br/>
+                 <a href={siteConfig.phoneHref} className="hover:text-[#B89C8A]">{siteConfig.phoneDisplay}</a>
+                 <br/>
+                 <a href={siteConfig.emailHref} className="hover:text-[#B89C8A]">{siteConfig.email}</a>
                </address>
             </div>
          </div>
          <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-[#E6DECE] flex flex-col md:flex-row items-center justify-between text-xs text-[#70655B]">
            <p>© {new Date().getFullYear()} Beauty's Reyyan. Tous droits réservés.</p>
            <div className="flex gap-4 mt-4 md:mt-0">
-             <a href="#" className="hover:text-[#4A3C31]">Instagram</a>
-             <a href="#" className="hover:text-[#4A3C31]">TikTok</a>
+             {socialLinks.map((link) => (
+               <a
+                 key={link.label}
+                 href={link.href}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="hover:text-[#4A3C31]"
+               >
+                 {link.label}
+               </a>
+             ))}
            </div>
          </div>
       </footer>

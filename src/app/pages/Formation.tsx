@@ -1,10 +1,29 @@
 import { motion } from "motion/react";
 import { CheckCircle2, GraduationCap, ServerCog, ArrowRight, ShieldCheck, Truck, Zap } from "lucide-react";
 import { NavLink } from "react-router";
+import { Seo } from "../components/Seo";
+import { getBreadcrumbSchema } from "../siteConfig";
 
 export function Formation() {
   return (
     <div className="relative min-h-screen px-6 md:px-12 max-w-7xl mx-auto py-24 md:py-32">
+       <Seo
+         title="Formation laser et equipement esthetique"
+         description="Beauty's Reyyan propose des formations laser a Gilly en Belgique ainsi qu'un accompagnement pour l'achat de machines esthetiques certifiees CE."
+         path="/formation"
+         keywords={[
+           "formation laser Belgique",
+           "formation epilation laser Gilly",
+           "machine esthetique CE",
+           "academie laser Belgique",
+         ]}
+         schema={[
+           getBreadcrumbSchema([
+             { name: "Accueil", path: "/" },
+             { name: "Formations", path: "/formation" },
+           ]),
+         ]}
+       />
        
        {/* Header */}
        <div className="max-w-3xl mb-24">

@@ -1,7 +1,9 @@
 import { motion, useScroll, useTransform } from "motion/react";
-import { ArrowRight, Star, Sparkle, Clock, CheckCircle2, ArrowUpRight } from "lucide-react";
-import { NavLink } from "react-router";
+import { ArrowRight, Sparkle, CheckCircle2 } from "lucide-react";
 import { useRef } from "react";
+import { FounderPortrait } from "../components/FounderPortrait";
+import { Seo } from "../components/Seo";
+import { getBreadcrumbSchema, siteConfig } from "../siteConfig";
 
 const services = [
   {
@@ -57,6 +59,20 @@ export function Home() {
 
   return (
     <div className="flex flex-col gap-24 overflow-x-hidden relative">
+      <Seo
+        title="Centre d'epilation laser a Gilly, Belgique"
+        description="Beauty's Reyyan est un centre d'epilation laser a Gilly en Belgique. Decouvrez les tarifs, l'expertise du centre, les soins complementaires et les informations pratiques pour prendre contact."
+        path="/"
+        keywords={[
+          "epilation laser Gilly Belgique",
+          "epilation definitive Charleroi",
+          "institut laser Gilly",
+          "centre esthetique Gilly",
+        ]}
+        schema={[
+          getBreadcrumbSchema([{ name: "Accueil", path: "/" }]),
+        ]}
+      />
       
       {/* Hero Section */}
       <section ref={containerRef} className="relative w-full px-6 md:px-12 mx-auto max-w-[96rem] h-[85vh] min-h-[600px] flex flex-col justify-end pb-12 rounded-[2.5rem] overflow-hidden group">
@@ -93,7 +109,7 @@ export function Home() {
              transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
              className="text-lg md:text-xl text-white/90 font-light max-w-xl"
            >
-             Le centre spécialisé dans l'épilation laser de pointe. Dites adieu aux poils et bonjour à la liberté.
+             Le centre specialise dans l'epilation laser de pointe a Gilly, en Belgique. Dites adieu aux poils et bonjour a la liberte.
            </motion.p>
            
            <motion.div
@@ -242,8 +258,8 @@ export function Home() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="bg-[#F4EFE6] rounded-[2rem] p-10 flex flex-col items-center justify-center text-center space-y-4"
           >
-             <span className="text-5xl font-serif text-[#B89C8A]">98%</span>
-             <p className="text-[#70655B] text-sm font-medium uppercase tracking-widest">De clients <br/> satisfaits</p>
+             <span className="text-5xl font-serif text-[#B89C8A]">{siteConfig.experienceYears}+</span>
+             <p className="text-[#70655B] text-sm font-medium uppercase tracking-widest">Annees <br/> d'experience</p>
           </motion.div>
 
           {/* Card 3 - Image */}
@@ -258,7 +274,7 @@ export function Home() {
              <div className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors duration-500" />
           </motion.div>
 
-          {/* Card 4 - Testimonial */}
+          {/* Card 4 - Founder */}
           <motion.div 
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
@@ -266,20 +282,32 @@ export function Home() {
              transition={{ duration: 0.6, delay: 0.3 }}
              className="md:col-span-2 bg-white border border-[#E6DECE] rounded-[2rem] p-10 flex flex-col justify-center gap-6"
           >
-             <div className="flex gap-1 text-[#B89C8A]">
-               {[1,2,3,4,5].map(i => <Star key={i} className="w-5 h-5 fill-current" />)}
-             </div>
-             <p className="text-xl md:text-2xl font-serif text-[#4A3C31] leading-snug italic">
-               "J'avais peur d'avoir mal, mais la machine est ultra-performante et l'équipe est aux petits soins. En 6 séances, je n'ai quasiment plus aucun poil."
-             </p>
              <div className="flex items-center gap-4">
-                <div className="relative w-10 h-10 rounded-full bg-[#E6DECE] overflow-hidden">
-                   <img src="https://images.unsplash.com/photo-1663229049147-30f47be043ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXJtYXRvbG9naXN0JTIwY29uc3VsdGF0aW9uJTIwbGFzZXJ8ZW58MXx8fHwxNzczMjQ5NzU0&ixlib=rb-4.1.0&q=80&w=1080" className="w-full h-full object-cover" alt="Sarah L." />
+                <div className="relative w-16 h-16 rounded-[1.25rem] bg-[#E6DECE] overflow-hidden border border-[#E6DECE]">
+                   <FounderPortrait
+                     alt="Portrait de la fondatrice de Beauty's Reyyan"
+                     className="w-full h-full object-cover"
+                   />
                 </div>
                 <div>
-                   <p className="font-medium text-[#4A3C31] text-sm">Sarah L.</p>
-                   <p className="text-xs text-[#70655B]">Patiente Vérifiée</p>
+                   <p className="font-medium text-[#4A3C31] text-base">Reyyan</p>
+                   <p className="text-xs text-[#70655B] uppercase tracking-[0.2em]">Fondatrice & Experte Laser</p>
                 </div>
+             </div>
+             <p className="text-xl md:text-2xl font-serif text-[#4A3C31] leading-snug italic">
+               "Un centre pense pour offrir une experience premium, un cadre rassurant et un accompagnement personnalise a chaque seance."
+             </p>
+             <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest text-[#70655B]">
+               <span className="rounded-full bg-[#F4EFE6] px-3 py-2">{siteConfig.experienceYears}+ ans d'experience</span>
+               <span className="rounded-full bg-[#F4EFE6] px-3 py-2">{siteConfig.address.city}, Belgique</span>
+               <a
+                 href={siteConfig.instagramUrl}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="rounded-full bg-[#F4EFE6] px-3 py-2 hover:text-[#4A3C31]"
+               >
+                 Instagram
+               </a>
              </div>
           </motion.div>
         </div>

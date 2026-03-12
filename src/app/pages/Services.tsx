@@ -1,12 +1,55 @@
 import { motion, AnimatePresence } from "motion/react";
-import { Clock, Plus, ArrowUpRight, Info, AlertTriangle, Snowflake, Sparkle, CheckCircle2, Droplets, ArrowRight, Zap, ShieldCheck, Waves } from "lucide-react";
+import { Clock, Info, AlertTriangle, Snowflake, Sparkle, CheckCircle2, Droplets, Zap, ShieldCheck, Waves } from "lucide-react";
 import { useState } from "react";
+import { Seo } from "../components/Seo";
+import { getBreadcrumbSchema, getFaqSchema } from "../siteConfig";
+
+const faqEntries = [
+  {
+    question: "Combien de seances sont generalement necessaires pour l'epilation laser ?",
+    answer:
+      "Le nombre de seances depend de la zone, de la pilosite et du cycle du poil. Le site presente des forfaits sur 8 seances, avec possibilite de retouches selon l'evolution.",
+  },
+  {
+    question: "Comment preparer sa peau avant une seance laser ?",
+    answer:
+      "Il faut arreter la cire, l'epilateur et la pince, raser la zone 24h avant le rendez-vous et venir sans maquillage ni creme sur la zone concernee.",
+  },
+  {
+    question: "Le laser est-il adapte a tous les phototypes ?",
+    answer:
+      "Le centre explique travailler avec plusieurs longueurs d'onde afin d'adapter le protocole au phototype et a la zone a traiter.",
+  },
+  {
+    question: "Pourquoi une retouche annuelle peut-elle etre utile ?",
+    answer:
+      "Le site rappelle que les variations hormonales et les cycles naturels peuvent provoquer quelques repousses residuelles, d'ou l'interet d'une retouche annuelle.",
+  },
+];
 
 export function Services() {
   const [activeTab, setActiveTab] = useState<"laser" | "cryo" | "hydra">("laser");
 
   return (
     <div className="relative min-h-screen px-4 md:px-6 lg:px-12 max-w-7xl mx-auto py-16 md:py-24 lg:py-32">
+       <Seo
+         title="Services laser, cryolipolyse et Hydra-Face"
+         description="Consultez les services Beauty's Reyyan a Gilly en Belgique: epilation laser, cryolipolyse, Hydra-Face, informations pratiques, contre-indications et FAQ."
+         path="/services"
+         keywords={[
+           "services epilation laser Gilly",
+           "cryolipolyse Belgique",
+           "Hydra-Face Gilly",
+           "tarifs epilation laser Charleroi",
+         ]}
+         schema={[
+           getBreadcrumbSchema([
+             { name: "Accueil", path: "/" },
+             { name: "Services", path: "/services" },
+           ]),
+           getFaqSchema(faqEntries),
+         ]}
+       />
        
        {/* Top Switcher */}
        <div className="flex flex-col items-center justify-center mb-12 md:mb-16 space-y-6">
@@ -651,6 +694,29 @@ export function Services() {
              </div>
           </motion.div>
        </div>
+
+       <section className="max-w-5xl mx-auto pb-32">
+          <div className="flex items-center gap-4 text-xs tracking-widest uppercase text-[#B89C8A] font-medium mb-8">
+             <span className="w-8 h-[1px] bg-[#B89C8A]" />
+             FAQ
+          </div>
+          <div className="space-y-4">
+             {faqEntries.map((item) => (
+                <details
+                  key={item.question}
+                  className="group bg-white border border-[#E6DECE] rounded-[1.5rem] p-6 open:border-[#B89C8A]"
+                >
+                  <summary className="list-none cursor-pointer flex items-center justify-between gap-6 text-[#4A3C31] font-serif text-xl">
+                    <span>{item.question}</span>
+                    <span className="text-[#B89C8A] transition-transform duration-300 group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-4 text-sm leading-relaxed text-[#70655B] max-w-3xl">
+                    {item.answer}
+                  </p>
+                </details>
+             ))}
+          </div>
+       </section>
 
     </div>
   );

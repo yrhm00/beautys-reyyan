@@ -1,0 +1,16 @@
+{
+  "name": "Beauty's Reyyan",
+  "short_name": "Beauty's Reyyan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FCFBF9",
+  "theme_color": "#FCFBF9",
+  "lang": "fr-BE",
+  "icons": [
+    {
+      "src": "/beautys-reyyan-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
