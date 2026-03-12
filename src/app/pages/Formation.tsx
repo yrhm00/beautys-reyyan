@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { CheckCircle2, GraduationCap, ServerCog, ArrowRight, ShieldCheck, Truck, Zap } from "lucide-react";
 import { NavLink } from "react-router";
+import { FounderPortrait } from "../components/FounderPortrait";
 import { Seo } from "../components/Seo";
 import { getBreadcrumbSchema } from "../siteConfig";
 
@@ -57,13 +58,31 @@ export function Formation() {
        {/* Training Section */}
        <section className="mb-32">
           <div className="bg-[#FCFBF9] border border-[#E6DECE] rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden group">
-             <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 md:opacity-100 md:w-1/3 z-0">
-                <img 
-                   src="https://images.unsplash.com/photo-1771909712463-b1c7b542f845?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZXN0aGV0aWMlMjBlZHVjYXRpb24lMjB0cmFpbmluZ3xlbnwxfHx8fDE3NzMyNTA1Nzd8MA&ixlib=rb-4.1.0&q=80&w=1080" 
-                   alt="Formation laser" 
-                   className="w-full h-full object-cover rounded-l-[4rem] group-hover:scale-105 transition-transform duration-1000"
-                   style={{ maskImage: 'linear-gradient(to right, transparent, black 40%)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 40%)' }}
-                />
+             <div className="absolute inset-y-0 right-0 hidden md:block md:w-[32%] z-0 pointer-events-none">
+                <div className="relative h-full w-full">
+                   <div className="absolute inset-6 rounded-[2.75rem] bg-gradient-to-br from-[#F7F1E8] via-[#EFE4D6] to-[#E1D0BC]" />
+                   <div className="absolute right-10 top-10 h-32 w-32 rounded-full bg-white/50 blur-2xl" />
+                   <div className="absolute bottom-10 left-8 h-40 w-40 rounded-full bg-[#B89C8A]/20 blur-3xl" />
+                   <div className="absolute inset-x-8 top-12 rounded-[2rem] border border-white/70 bg-white/75 p-6 backdrop-blur-xl shadow-[0_24px_80px_rgba(74,60,49,0.10)]">
+                      <p className="text-xs uppercase tracking-[0.35em] text-[#B89C8A] font-medium mb-4">
+                         Programme
+                      </p>
+                      <div className="space-y-4">
+                         <div className="rounded-2xl bg-[#FCFBF9] border border-[#E6DECE] px-4 py-3">
+                            <p className="text-[#4A3C31] font-medium text-sm">Théorie complète</p>
+                            <p className="text-[#70655B] text-xs mt-1">Protocoles, réglages et sécurité.</p>
+                         </div>
+                         <div className="rounded-2xl bg-[#FCFBF9] border border-[#E6DECE] px-4 py-3">
+                            <p className="text-[#4A3C31] font-medium text-sm">Pratique encadrée</p>
+                            <p className="text-[#70655B] text-xs mt-1">Exercices sur modèles à l'institut.</p>
+                         </div>
+                         <div className="rounded-2xl bg-[#4A3C31] px-4 py-4 text-white">
+                            <p className="text-sm font-medium">Attestation de réussite</p>
+                            <p className="text-[#E6DECE] text-xs mt-1">Suivi post-formation inclus.</p>
+                         </div>
+                      </div>
+                   </div>
+                </div>
              </div>
              
              <div className="relative z-10 max-w-2xl">
@@ -127,11 +146,19 @@ export function Formation() {
                transition={{ duration: 0.8 }}
                className="relative aspect-square rounded-[2.5rem] overflow-hidden bg-[#E6DECE]"
              >
-                <img 
-                   src="https://images.unsplash.com/photo-1720424643392-4b63bd63d271?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWF1dHklMjBzYWxvbiUyMGxhc2VyJTIwbWFjaGluZXxlbnwxfHx8fDE3NzMyNTA1ODN8MA&ixlib=rb-4.1.0&q=80&w=1080" 
-                   alt="Machine laser professionnelle" 
-                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                <FounderPortrait
+                  alt="Portrait de la fondatrice de Beauty's Reyyan"
+                  className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#4A3C31]/30 to-transparent pointer-events-none" />
+                <div className="absolute left-6 bottom-6 bg-white/85 backdrop-blur-md border border-white rounded-2xl px-5 py-4">
+                  <p className="text-xs uppercase tracking-[0.3em] text-[#B89C8A] font-medium mb-1">
+                    Institut Beauty's Reyyan
+                  </p>
+                  <p className="text-[#4A3C31] font-serif text-lg">
+                    Formation, conseil et accompagnement
+                  </p>
+                </div>
              </motion.div>
 
              <motion.div
