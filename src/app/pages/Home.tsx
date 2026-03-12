@@ -331,28 +331,51 @@ export function Home() {
                      <h3 className="text-3xl font-serif text-[#4A3C31] sticky top-32">{section.category}</h3>
                   </div>
                   
-                  <div className="lg:col-span-8 flex flex-col gap-6">
-                     {section.items.map((item, itemIndex) => (
-                        <motion.div 
-                          key={item.name}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: itemIndex * 0.1 }}
-                          className="group relative bg-[#FCFBF9] border border-[#E6DECE] rounded-[2rem] p-6 md:p-8 hover:bg-[#F4EFE6] hover:border-[#B89C8A] transition-all duration-500 overflow-hidden"
-                        >
-                           <div className="flex items-start justify-between gap-4 mb-3">
-                              <h4 className="text-lg md:text-xl font-serif text-[#4A3C31] flex-1">{item.name}</h4>
-                              <span className="text-2xl md:text-3xl font-serif text-[#4A3C31] shrink-0">{item.price}</span>
-                           </div>
-                           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
-                              {item.desc && <p className="text-[#70655B] text-sm leading-relaxed flex-1 pr-4">{item.desc}</p>}
-                              <span className="text-[10px] md:text-xs text-[#B89C8A] uppercase tracking-widest font-medium shrink-0 sm:text-right">
-                                 {item.duration}
-                              </span>
-                           </div>
-                        </motion.div>
-                     ))}
+                  <div className="lg:col-span-8">
+                     {section.category === "Tarifs à la séance (Femmes)" ? (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 bg-[#FCFBF9] border border-[#E6DECE] rounded-[2rem] p-8 md:p-10">
+                           {section.items.map((item, itemIndex) => (
+                              <motion.div 
+                                key={item.name}
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.3, delay: (itemIndex % 7) * 0.1 }}
+                                className="flex justify-between items-end border-b border-[#E6DECE] pb-3 group-hover:border-[#B89C8A] transition-colors"
+                              >
+                                 <div className="flex flex-col pr-4">
+                                    <span className="text-lg font-serif text-[#4A3C31]">{item.name}</span>
+                                    {item.desc && <span className="text-xs text-[#70655B] mt-1">{item.desc}</span>}
+                                 </div>
+                                 <span className="text-xl font-serif text-[#B89C8A] whitespace-nowrap">{item.price}</span>
+                              </motion.div>
+                           ))}
+                        </div>
+                     ) : (
+                        <div className="flex flex-col gap-6">
+                           {section.items.map((item, itemIndex) => (
+                              <motion.div 
+                                key={item.name}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: itemIndex * 0.1 }}
+                                className="group relative bg-[#FCFBF9] border border-[#E6DECE] rounded-[2rem] p-6 md:p-8 hover:bg-[#F4EFE6] hover:border-[#B89C8A] transition-all duration-500 overflow-hidden"
+                              >
+                                 <div className="flex items-start justify-between gap-4 mb-3">
+                                    <h4 className="text-lg md:text-xl font-serif text-[#4A3C31] flex-1">{item.name}</h4>
+                                    <span className="text-2xl md:text-3xl font-serif text-[#4A3C31] shrink-0">{item.price}</span>
+                                 </div>
+                                 <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+                                    {item.desc && <p className="text-[#70655B] text-sm leading-relaxed flex-1 pr-4">{item.desc}</p>}
+                                    <span className="text-[10px] md:text-xs text-[#B89C8A] uppercase tracking-widest font-medium shrink-0 sm:text-right">
+                                       {item.duration}
+                                    </span>
+                                 </div>
+                              </motion.div>
+                           ))}
+                        </div>
+                     )}
                   </div>
                </motion.div>
             ))}
