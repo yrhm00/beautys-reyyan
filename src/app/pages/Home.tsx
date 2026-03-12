@@ -156,13 +156,36 @@ export function Home() {
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 0.8, delay: 0.4 }}
-             className="absolute -bottom-8 -right-8 md:-bottom-12 md:-right-12 w-48 md:w-56 aspect-square rounded-[2rem] overflow-hidden border-8 border-[#F9F6F0]"
+             className="absolute -bottom-8 -right-8 md:-bottom-12 md:-right-12 w-48 md:w-56 aspect-square rounded-[2rem] overflow-hidden border-8 border-[#F9F6F0] bg-[#F4EFE6] shadow-[0_24px_80px_rgba(74,60,49,0.16)]"
            >
-             <img 
-               src="https://images.unsplash.com/photo-1764114235896-034c8772de01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhZXN0aGV0aWMlMjBsYXNlciUyMG1hY2hpbmV8ZW58MXx8fHwxNzczMjQ5NzQ3&ixlib=rb-4.1.0&q=80&w=1080" 
-               alt="Machine laser" 
-               className="w-full h-full object-cover"
-             />
+             <div className="relative h-full w-full overflow-hidden rounded-[1.4rem] bg-gradient-to-br from-[#FCFBF9] via-[#F4EFE6] to-[#E7D7C4] p-5">
+               <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-white/50 blur-2xl" />
+               <div className="absolute -left-6 bottom-0 h-28 w-28 rounded-full bg-[#B89C8A]/20 blur-2xl" />
+               <div className="relative flex h-full flex-col justify-between">
+                 <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[#DCCAB9] bg-white/80 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.24em] text-[#B89C8A]">
+                   <Sparkle className="h-3.5 w-3.5" />
+                   Institut laser
+                 </div>
+                 <div className="space-y-3">
+                   <div>
+                     <p className="text-4xl font-serif leading-none text-[#4A3C31]">
+                       {siteConfig.experienceYears}+
+                     </p>
+                     <p className="mt-1 text-xs uppercase tracking-[0.28em] text-[#8C7768]">
+                       Ans d'experience
+                     </p>
+                   </div>
+                   <div className="rounded-[1.25rem] border border-white/80 bg-white/75 px-4 py-3 backdrop-blur-sm">
+                     <p className="text-sm font-medium text-[#4A3C31]">
+                       Gilly, Belgique
+                     </p>
+                     <p className="mt-1 text-xs leading-relaxed text-[#70655B]">
+                       Expertise dediee a l'epilation laser et aux soins avances.
+                     </p>
+                   </div>
+                 </div>
+               </div>
+             </div>
            </motion.div>
         </div>
 
