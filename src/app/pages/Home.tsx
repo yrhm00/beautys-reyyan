@@ -251,7 +251,7 @@ export function Home() {
 
       {/* Bento Grid Features */}
       <section className="relative px-6 md:px-12 max-w-7xl mx-auto py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:auto-rows-[300px]">
           
           {/* Card 1 */}
           <motion.div 
@@ -291,7 +291,7 @@ export function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-1 rounded-[2rem] overflow-hidden relative"
+            className="md:col-span-1 rounded-[2rem] overflow-hidden relative min-h-[320px] md:min-h-0"
           >
              <img src="https://images.unsplash.com/photo-1762625570087-6d98fca29531?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwY2xpbmljJTIwaW50ZXJpb3J8ZW58MXx8fHwxNzczMjQ5NzQ3&ixlib=rb-4.1.0&q=80&w=1080" alt="Clinique intérieur" className="absolute inset-0 w-full h-full object-cover" />
              <div className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors duration-500" />
@@ -303,7 +303,7 @@ export function Home() {
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 0.6, delay: 0.3 }}
-             className="md:col-span-2 bg-white border border-[#E6DECE] rounded-[2rem] p-10 flex flex-col justify-center gap-6"
+             className="md:col-span-2 bg-white border border-[#E6DECE] rounded-[2rem] px-7 py-8 sm:px-8 sm:py-9 md:p-10 flex flex-col justify-center gap-6"
           >
              <div className="flex items-center gap-4">
                 <div className="relative w-16 h-16 rounded-[1.25rem] bg-[#E6DECE] overflow-hidden border border-[#E6DECE]">
@@ -317,17 +317,17 @@ export function Home() {
                    <p className="text-xs text-[#70655B] uppercase tracking-[0.2em]">Fondatrice & Experte Laser</p>
                 </div>
              </div>
-             <p className="text-xl md:text-2xl font-serif text-[#4A3C31] leading-snug italic">
+             <p className="max-w-[16rem] sm:max-w-[18rem] md:max-w-none text-lg sm:text-xl md:text-2xl font-serif text-[#4A3C31] leading-[1.35] italic">
                "Un centre pense pour offrir une experience premium, un cadre rassurant et un accompagnement personnalise a chaque seance."
              </p>
-             <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest text-[#70655B]">
-               <span className="rounded-full bg-[#F4EFE6] px-3 py-2">{siteConfig.experienceYears}+ ans d'experience</span>
-               <span className="rounded-full bg-[#F4EFE6] px-3 py-2">{siteConfig.address.city}, Belgique</span>
+             <div className="max-w-[17rem] sm:max-w-none flex flex-wrap items-center gap-3 text-[11px] sm:text-xs uppercase tracking-[0.14em] sm:tracking-widest text-[#70655B]">
+               <span className="rounded-full bg-[#F4EFE6] px-4 py-2.5">{siteConfig.experienceYears}+ ans d'experience</span>
+               <span className="rounded-full bg-[#F4EFE6] px-4 py-2.5">{siteConfig.address.city}, Belgique</span>
                <a
                  href={siteConfig.instagramUrl}
                  target="_blank"
                  rel="noopener noreferrer"
-                 className="rounded-full bg-[#F4EFE6] px-3 py-2 hover:text-[#4A3C31]"
+                 className="rounded-full bg-[#F4EFE6] px-4 py-2.5 hover:text-[#4A3C31]"
                >
                  Instagram
                </a>
