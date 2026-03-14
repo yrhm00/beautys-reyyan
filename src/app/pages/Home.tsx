@@ -156,9 +156,9 @@ export function Home() {
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
              transition={{ duration: 0.8, delay: 0.4 }}
-             className="absolute bottom-4 right-4 md:-bottom-12 md:-right-12 w-40 sm:w-44 md:w-56 aspect-square rounded-[1.75rem] md:rounded-[2rem] overflow-hidden border-4 md:border-8 border-[#F9F6F0] bg-[#F4EFE6] shadow-[0_24px_80px_rgba(74,60,49,0.16)]"
+             className="absolute bottom-4 right-4 md:-bottom-12 md:-right-12 w-40 h-52 sm:w-44 sm:h-56 md:w-56 md:h-56 rounded-[1.75rem] md:rounded-[2rem] overflow-hidden border-4 md:border-8 border-[#F9F6F0] bg-[#F4EFE6] shadow-[0_24px_80px_rgba(74,60,49,0.16)]"
            >
-             <div className="relative h-full w-full overflow-hidden rounded-[1.3rem] md:rounded-[1.4rem] bg-gradient-to-br from-[#FCFBF9] via-[#F4EFE6] to-[#E7D7C4] p-4 md:p-5">
+             <div className="relative h-full w-full overflow-hidden rounded-[1.3rem] md:rounded-[1.4rem] bg-gradient-to-br from-[#FCFBF9] via-[#F4EFE6] to-[#E7D7C4] p-3.5 md:p-5">
                <div className="absolute right-0 top-0 h-20 w-20 md:h-24 md:w-24 rounded-full bg-white/50 blur-2xl" />
                <div className="absolute -left-6 bottom-0 h-24 w-24 md:h-28 md:w-28 rounded-full bg-[#B89C8A]/20 blur-2xl" />
                <div className="relative flex h-full flex-col justify-between">
@@ -171,7 +171,7 @@ export function Home() {
                      <p className="text-3xl md:text-4xl font-serif leading-none text-[#4A3C31]">
                        {siteConfig.experienceYears}+
                      </p>
-                     <p className="mt-1 text-[10px] md:text-xs uppercase tracking-[0.18em] md:tracking-[0.28em] text-[#8C7768]">
+                     <p className="mt-1 text-[10px] md:text-xs uppercase tracking-[0.16em] md:tracking-[0.28em] leading-tight text-[#8C7768]">
                        Ans d'experience
                      </p>
                    </div>
@@ -179,7 +179,7 @@ export function Home() {
                      <p className="text-xs md:text-sm font-medium text-[#4A3C31]">
                        Gilly, Belgique
                      </p>
-                     <p className="mt-1 text-[10px] md:text-xs leading-relaxed text-[#70655B]">
+                     <p className="mt-1 text-[10px] md:text-xs leading-tight md:leading-relaxed text-[#70655B]">
                        Expertise dediee a l'epilation laser et aux soins avances.
                      </p>
                    </div>
