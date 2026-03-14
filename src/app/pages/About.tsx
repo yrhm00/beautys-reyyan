@@ -61,7 +61,7 @@ export function About() {
                 Ce positionnement nous permet de travailler avec des protocoles clairs, d'adapter chaque seance au phototype de la cliente et d'offrir une experience premium au coeur de Gilly, en Belgique.
              </p>
           </div>
-          <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden">
+          <div className="relative aspect-[3/4] rounded-[2rem] overflow-hidden bg-[#F9F6F0]">
              <motion.div
                initial={{ opacity: 0, scale: 0.9 }}
                whileInView={{ opacity: 1, scale: 1 }}
@@ -69,10 +69,12 @@ export function About() {
                transition={{ duration: 1 }}
                className="w-full h-full"
              >
-               <FounderPortrait
-                 alt="Portrait de la fondatrice de Beauty's Reyyan"
-                 className="w-full h-full object-cover"
-               />
+               <div className="flex h-full items-start justify-center px-5 pt-6 pb-36 sm:px-6 sm:pt-8 sm:pb-40 md:p-0">
+                  <FounderPortrait
+                    alt="Portrait de la fondatrice de Beauty's Reyyan"
+                    className="h-full w-full object-contain object-top md:object-cover"
+                  />
+               </div>
              </motion.div>
              <div className="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-white">
                 <h3 className="text-xl font-serif text-[#4A3C31] mb-1">Reyyan</h3>
